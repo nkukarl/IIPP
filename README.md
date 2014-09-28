@@ -5,3 +5,6 @@ An Introduction to Interactive Programming in Python - Coursera
 
 Rock-paper-scissors-lizard-Spock
 http://www.codeskulptor.org/#user37_a2UC7PrZhREVdhB.py
+
+Guess-the-number
+http://www.codeskulptor.org/#user38_CGKV929HjO9SFJE.py
