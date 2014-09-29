@@ -6,41 +6,41 @@ import simplegui
 import math
 import random
 
+rng = 100
+
 # helper function to start and restart the game
 def new_game():
     # initialize global variables used in your code here
-    range100()
+    global guess_remain, secret_number
+    
+    guess_remain = int(math.ceil(math.log(rng) / math.log(2)))
+    secret_number = random.randrange(0, rng)
+    print "New game. Range is from 0 to", rng
+    print "Number of remaining guesses is", guess_remain, "\n"
+    
 
 # define event handlers for control panel
 def range100():
     # button that changes the range to [0,100) and starts a new game 
-    global guessRemain, secret_number
-    
-    guessRemain = 7
-    secret_number = random.randrange(0, 100)
-    
-    print "New game. Range is from 0 to 100"
-    print "Number of remaining guesses is", guessRemain, "\n"
+    global rng
+    rng = 100
+    new_game()
 
 def range1000():
     # button that changes the range to [0,1000) and starts a new game     
-    global guessRemain, secret_number
-    
-    guessRemain = 10
-    secret_number = random.randrange(0, 1000)
-    
-    print "New game. Range is from 0 to 1000"
-    print "Number of remaining guesses is", guessRemain, "\n"
+    global rng
+    rng = 1000
+    new_game()
     
 def input_guess(guess):
-    global guessRemain, secret_number
+    global guess_remain, secret_number
     
     print "Guess was ", int(guess)
     
-    guessRemain -= 1
-    print "Number of remaining guesses is", guessRemain
+    guess_remain -= 1
+    print "Number of remaining guesses is", guess_remain
     
-    if guessRemain > 0:
+    if guess_remain > 0:
         if int(guess) > secret_number:
             print "Lower!\n"
         elif int(guess) < secret_number:
