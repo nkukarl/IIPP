@@ -10,10 +10,13 @@ running_state = False
 # define helper function format that converts time
 # in tenths of seconds into formatted string A:BC.D
 def format(t):
-    D = t % 10
-    BC = (t // 10) % 60
-    A = t // 600
-    return str(A) + ":" + str(BC) + "." + str(D)
+    D = str(t % 10)
+    BC = str((t // 10) % 60)
+    if len(BC) == 1:
+        BC = '0' + BC
+    A = str(t // 600)
+    
+    return A + ":" + BC + "." + D
    
 # define event handlers for buttons; "Start", "Stop", "Reset"
 def start():
