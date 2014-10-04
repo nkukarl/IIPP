@@ -37,7 +37,7 @@ def stop():
 def reset():
     global t, succ_stops, total_stops, running_state
     timer.stop()
-    running_state = "False"
+    running_state = False
     t = 0
     succ_stops = 0
     total_stops = 0
