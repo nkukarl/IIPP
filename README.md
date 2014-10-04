@@ -8,3 +8,6 @@ http://www.codeskulptor.org/#user37_a2UC7PrZhREVdhB.py
 
 Guess-the-number
 http://www.codeskulptor.org/#user38_4YbHnA1piZwIv4Z.py
+
+Stop-watch-the-game
+http://www.codeskulptor.org/#user38_8sQ6ZGFuE7_65.py
