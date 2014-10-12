@@ -41,7 +41,6 @@ def new_game():
 
 def draw(canvas):
     global score1, score2, paddle1_pos, paddle2_pos, ball_pos, ball_vel
- 
         
     # draw mid line and gutters
     canvas.draw_line([WIDTH / 2, 0],[WIDTH / 2, HEIGHT], 1, "White")
@@ -71,7 +70,7 @@ def draw(canvas):
             ball_vel[1] = ball_vel[1] * 1.1
             
     # draw ball
-    canvas.draw_circle(ball_pos, BALL_RADIUS, 2, "White")
+    canvas.draw_circle(ball_pos, BALL_RADIUS, 1, "White", "White")
     # update paddle's vertical position, keep paddle on the screen
     
     if paddle1_vel[1] > 0:
@@ -95,16 +94,12 @@ def draw(canvas):
     paddle2_pos_bottom = paddle2_pos[1] + HALF_PAD_HEIGHT
     
     # draw paddles
-    canvas.draw_line([0, paddle1_pos_up], [PAD_WIDTH, paddle1_pos_up], 1, "White")
-    canvas.draw_line([0, paddle1_pos_bottom], [PAD_WIDTH, paddle1_pos_bottom], 1, "White")
-    canvas.draw_line([0, paddle1_pos_up], [0, paddle1_pos_bottom], 1, "White")
-    
-    canvas.draw_line([WIDTH - PAD_WIDTH, paddle2_pos_up], [WIDTH - 1, paddle2_pos_up], 1, "White")
-    canvas.draw_line([WIDTH - PAD_WIDTH, paddle2_pos_bottom], [WIDTH - 1, paddle2_pos_bottom], 1, "White")
-    canvas.draw_line([WIDTH, paddle2_pos_up], [WIDTH, paddle2_pos_bottom], 1, "White")
+    canvas.draw_polygon([(0, paddle1_pos_up), (PAD_WIDTH - 1,paddle1_pos_up), (PAD_WIDTH - 1, paddle1_pos_bottom), (0, paddle1_pos_bottom)], 1, "White", "White")
+    canvas.draw_polygon([(WIDTH - PAD_WIDTH - 1, paddle2_pos_up), (WIDTH - 1, paddle2_pos_up), (WIDTH - 1, paddle2_pos_bottom), (WIDTH - PAD_WIDTH - 1, paddle2_pos_bottom)], 1, "White", "White")
+
     # draw scores
-    canvas.draw_text(str(score1), [200, 50], 20, "White")
-    canvas.draw_text(str(score2), [400, 50], 20, "White")
+    canvas.draw_text(str(score1), [150, 50], 40, "White")
+    canvas.draw_text(str(score2), [420, 50], 40, "White")
         
 def keydown(key):
     global paddle1_vel, paddle2_vel
