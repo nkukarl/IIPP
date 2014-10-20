@@ -31,15 +31,14 @@ def mouseclick(pos):
             turn += 1
             label.set_text("Turns = " + str(turn))
     else:
-        idx1_temp = idx1
-        idx2_temp = idx2
         if exposed[pos[0] // 50] == 0:
+            if deck[idx1] != deck[idx2]:
+                    exposed[idx1] = 0
+                    exposed[idx2] = 0
             idx1 = pos[0] // 50
             exposed[idx1] = 1
             state = 1
-            if deck[idx1_temp] != deck[idx2_temp]:
-                    exposed[idx1_temp] = 0
-                    exposed[idx2_temp] = 0
+            
                         
 # cards are logically 50x100 pixels in size    
 def draw(canvas):
