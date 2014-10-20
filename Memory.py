@@ -19,38 +19,40 @@ def mouseclick(pos):
     # add game state logic here
     global exposed, state, idx1, idx2, turn
     if state == 0:
-        if exposed[pos[0] // 50] == 0:
-            idx1 = pos[0] // 50
+        if exposed[pos[0] // 50 + pos[1] // 100 * 4] == 0:
+            idx1 = pos[0] // 50 + pos[1] // 100 * 4
             exposed[idx1] = 1
             state = 1
     elif state == 1:
-        if exposed[pos[0] // 50] == 0:
-            idx2 = pos[0] // 50
+        if exposed[pos[0] // 50 + pos[1] // 100 * 4] == 0:
+            idx2 = pos[0] // 50 + pos[1] // 100 * 4
             exposed[idx2] = 1
             state = 2
             turn += 1
             label.set_text("Turns = " + str(turn))
     else:
-        if exposed[pos[0] // 50] == 0:
+        if exposed[pos[0] // 50 + pos[1] // 100 * 4] == 0:
             if deck[idx1] != deck[idx2]:
                     exposed[idx1] = 0
                     exposed[idx2] = 0
-            idx1 = pos[0] // 50
+            idx1 = pos[0] // 50 + pos[1] // 100 * 4
             exposed[idx1] = 1
             state = 1
             
                         
 # cards are logically 50x100 pixels in size    
 def draw(canvas):
-    for i in range(len(deck)):
-        if exposed[i]:
-            canvas.draw_text(str(deck[i]), [50 * i + 15, 65], 40, "white")
-        else:
-            canvas.draw_polygon([[i * 50, 0], [(i + 1) * 50, 0], [(i + 1) * 50, 100], [i * 50, 100]], 3, 'Red', 'Green')
-
-
+    i = 0
+    for j in range(4):
+        for k in range(4):
+            if exposed[i]:
+                canvas.draw_text(str(deck[i]), [50 * k + 15, 100 * j + 65], 40, "white")
+            else:
+                canvas.draw_polygon([[50 * k, 100 * j], [50 * (k + 1), 100 * j], [50 * (k + 1), 100 * (j + 1)], [50 * k, 100 * (j + 1)]], 3, 'Red', 'Green')
+            i += 1
+            
 # create frame and add a button and labels
-frame = simplegui.create_frame("Memory", 800, 100)
+frame = simplegui.create_frame("Memory", 200, 400)
 frame.add_button("Reset", new_game)
 label = frame.add_label("Turns = 0")
 
