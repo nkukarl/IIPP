@@ -20,3 +20,6 @@ http://www.codeskulptor.org/#user38_O3ExqlwRfGgOWal.py
 
 Blackjack
 http://www.codeskulptor.org/#user38_VXvl5tQkK9irw53.py
+
+Spaceship
+http://www.codeskulptor.org/#user38_6jLMDDP55gv9AcH.py
